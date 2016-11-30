@@ -663,8 +663,12 @@ sub email_valiases {
     }
 
     sub check_for_phphandler {
+     if -e '/etc/cpanel/ea4/is_ea4'; {
+     	my $phpconf = '/etc/cpanel/ea4/php.conf';
+     } else {	
         my $phpconf = '/usr/local/apache/conf/php.conf.yaml';
-        open my $phpconf_fh, '<', $phpconf;
+       }
+	open my $phpconf_fh, '<', $phpconf;
         while (<$phpconf_fh>) {
             if (/^php5:[ \t]+['"]?([^'"]+)/) {
                 $php5handler = $1;
