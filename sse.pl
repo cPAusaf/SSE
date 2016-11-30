@@ -663,7 +663,8 @@ sub email_valiases {
     }
 
     sub check_for_phphandler {
-     if -e "/etc/cpanel/ea4/is_ea4" {
+    my $ea4conf = '/etc/cpanel/ea4/is_ea4';
+     if (-e $ea4conf) {
      	my $phpconf = '/etc/cpanel/ea4/php.conf';
      } 
      else {
